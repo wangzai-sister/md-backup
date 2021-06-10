@@ -6,7 +6,7 @@ name: jd_jxnc
 on:
   workflow_dispatch:
   schedule:
-    - cron: '16 1,4,10 * * *'
+    - cron: '16 1,4,10,14 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -42,8 +42,6 @@ jobs:
           python3 sjys.py
       - name: '运行 【京喜农场】'
         run: |
-          curl https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/jd_jxnc2.js -o jd_jxnc2.js
-          node jd_jxnc2.js
           node jd_jxnc.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
