@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_tyt
+name: jd_zooMap
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '19 */3 * * *'
+    - cron: '15 6 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_tyt
+    types: jd_zooMap
 jobs:
   build:
 
@@ -40,9 +40,9 @@ jobs:
       - name: '运行【随机延时】'
         run: |
           python3 sjys.py
-      - name: '运行 【柠檬拆红包】'
+      - name: '运行 【618动物联萌图鉴任务】'
         run: |
-          node jd_tyt.js
+          node jd_zooMap.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
@@ -58,4 +58,3 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
