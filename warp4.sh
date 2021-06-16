@@ -11,6 +11,11 @@ cp wgcf /usr/local/bin/wgcf
 chmod +x /usr/local/bin/wgcf
 chmod +x /usr/bin/wireguard-go
 echo | wgcf register
+until [ $? -eq 0 ]
+do
+sleep 1s
+echo | wgcf register
+done
 wgcf generate
 sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
 sed -i '/\:\:\/0/d' wgcf-profile.conf
