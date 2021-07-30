@@ -34,7 +34,7 @@ wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wg
 
 #### 脚本3：IPV4与IPV6都是WARP分配的IP
 
-#### 脚本4：IPV6都是WARP分配的IP，无IPV4
+#### 脚本4：IPV6是WARP分配的IP，无IPV4（估计目前没人会选择脚本4。。。）
 
 - [刷新脚本](https://purge.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgmd.sh)
 
