@@ -19,11 +19,7 @@
 
 8：替代NAT64/DNS64方案，网络效率更高！
 
-#### WARP原理与及搭建探讨：https://youtu.be/78dZgYFS-Qo
-
-#### 抛弃DNS64、自定义域名、IP分流教程（推荐）：https://youtu.be/fY9HDLJ7mnM
-
-#### 联合Oracle甲骨文https://github.com/YG-tsj/CFWarp-Pro #双栈Warp接管IPV4与IPV6网络：https://youtu.be/o7e_ikV-m-g
+#### 联合Oracle甲骨文https://github.com/YG-tsj/CFWarp-Pro 
 -------------------------------------------------------------------------------------------------------
 
 ### 一：恢复EUserv官方DNS64（重装系统者，可直接跳到第二步脚本安装）
