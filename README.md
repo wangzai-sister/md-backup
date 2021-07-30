@@ -1,3 +1,4 @@
+##  整合脚本，即将更新！ 
 
 ### 给EUserv IPV6添加WARP，白嫖WARP高速通道！针对OpenVZ、LXC架构的IPV6 only VPS！
 
