@@ -180,7 +180,7 @@ sudo systemctl start wg-quick@wgcf
 sudo rm -f warp4* wgcf* wireguard-go*
 sudo grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
 yellow " 检测是否成功启动Warp！\n 显示IPV4地址：$(wget -qO- -4 ip.gs) "
-green " 如上方显示IPV4地址：8.…………，则说明成功啦！\n 如上方无IP显示,（说明申请WGCF账户失败），请重复运行该脚本吧，直到成功为止！！！"
+green " 如上方显示IPV4地址：8.…………，则说明成功啦！\n 如上方无IP显示，则说明失败喽！！"
 }
 
 function w646(){
@@ -216,7 +216,7 @@ sudo systemctl enable wg-quick@wgcf
 sudo systemctl start wg-quick@wgcf
 sudo grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
 yellow " 检测是否成功启动（IPV4+IPV6）双栈Warp！\n 显示IPV4地址：$(wget -qO- -4 ip.gs) 显示IPV6地址：$(wget -qO- -6 ip.gs) "
-green " 如上方显示IPV4地址：8.…………，IPV6地址：2a09:…………，则说明成功啦！\n 如上方IPV4无IP显示,IPV6显示本地IP（说明申请WGCF账户失败），请重复运行该脚本吧，直到成功为止！！！"
+green " 如上方显示IPV4地址：8.…………，IPV6地址：2a09:…………，则说明成功啦！\n 如上方IPV4无IP显示，IPV6显示本地IP，则说明失败喽！"
 }
 
 function w66(){
@@ -300,20 +300,20 @@ systemctl status wg-quick@wgcf
 }
 
 function up4(){
-wget -N --no-check-certificate https://raw.githubusercontent.com/YG-tsj/CFWarp-Pro/main/multi.sh && chmod +x multi.sh && ./multi.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/YG-tsj/EUserv-warp/main/wgmd.sh && chmod +x wgmd.sh && ./wgmd.sh
 }
 
 function up6(){
 echo -e nameserver 2a00:1098:2c::1 > /etc/resolv.conf
-wget -6 -N --no-check-certificate https://raw.githubusercontent.com/YG-tsj/CFWarp-Pro/main/multi.sh && chmod +x multi.sh && ./multi.sh
+wget -6 -N --no-check-certificate https://raw.githubusercontent.com/YG-tsj/EUserv-warp/main/wgmd.sh && chmod +x wgmd.sh && ./wgmd.sh
 }
 
 #主菜单
 function start_menu(){
     clear
-    yellow " 详细说明 https://github.com/YG-tsj/CFWarp-Pro  YouTube频道：甬哥侃侃侃" 
+    yellow " 详细说明 https://github.com/YG-tsj/EUserv-warp  YouTube频道：甬哥侃侃侃" 
     
-    red " 切记：进入脚本快捷方式 bash multi.sh "
+    red " 切记：进入脚本快捷方式 bash wgmd.sh "
     
     white " ==================一、VPS相关调整选择（更新中）==========================================" 
     
