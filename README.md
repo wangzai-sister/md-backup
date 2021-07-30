@@ -1,4 +1,4 @@
-##  2021.7.30 整合脚本，即将更新！ 
+##  2021.7.30 整合脚本更新！ 
 
 ### 给EUserv IPV6添加WARP，白嫖WARP高速通道！针对OpenVZ、LXC架构的IPV6 only VPS！
 
@@ -16,32 +16,29 @@
 
 6：加速VPS到CloudFlare CDN节点访问速度！
 
-7：避开原VPS的IP需要谷歌验证码问题！
+7：避开原VPS的IP需要谷歌验证码问题（目前无法彻底避开啦）！
 
 8：替代NAT64/DNS64方案，网络效率更高！
 
 #### 联合Oracle甲骨文https://github.com/YG-tsj/CFWarp-Pro 
 -------------------------------------------------------------------------------------------------------
 
-### 一：恢复EUserv官方DNS64（重装系统者，可直接跳到第二步脚本安装）
-```
-echo -e "search blue.kundencontroller.de\noptions rotate\nnameserver 2a02:180:6:5::1c\nnameserver 2a02:180:6:5::4\nnameserver 2a02:180:6:5::1e\nnameserver 2a02:180:6:5::1d" > /etc/resolv.conf
-```
 
-### 二、重装系统能解决99%的问题！无须添加DNS64！一键到底！
+### 仅支持Debian 10/Ubuntu 20.04系统一键综合脚本
+```
+wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgmd.sh && chmod +x wgmd.sh && ./wgmd.sh
+```
+进入脚本快捷方式 ```bash wgmd.sh```
 
-#### 仅支持Debian 10/Ubuntu 20.04系统，根据自己需求选择以下脚本1或者脚本2（有无成功可查看脚本末尾提示）
+#### 脚本2：IPV4是WARP分配的IP，IPV6是VPS本地IP
 
-#### 脚本1：IPV4是WARP分配的IP，IPV6是VPS本地IP
-```
-wget -qO- https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/warp4.sh|bash
-```
-#### 脚本2：IPV4与IPV6都是WARP分配的IP
-```
-wget -qO- https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/warp64.sh|bash
-```
+#### 脚本3：IPV4与IPV6都是WARP分配的IP
+
+#### 脚本4：IPV6都是WARP分配的IP，无IPV4
+
+- [刷新脚本](https://purge.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgmd.sh)
+
 ----------------------------------------------------------------------------------------------------
-#### Netflix检测项目：https://github.com/YG-tsj/Netflix-Check
 
 #### 注意：域名解析所填写的IP必须是VPS本地IP，与WARP分配的IP没关系！
 
@@ -52,12 +49,8 @@ wget -qO- https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/warp64.sh|bash
 
 #### 查看WARP当前统计状态：```wg```
 
-#### 查看当前IPV4 IP：```curl -4 ip.p3terx.com```
-
-#### 查看当前IPV6 IP：```curl -6 ip.p3terx.com```
-
 ------------------------------------------------------------------------------------------------------------- 
-#### IPV6 VPS专用分流配置文件(以下默认全局IPV4优先，IP、域名自定义，详情见视频教程)
+#### IPV6 VPS专用分流配置文件(以下默认全局IPV4优先，IP、域名自定义，视频教程以后更新)
 ```
 { 
 "outbounds": [
