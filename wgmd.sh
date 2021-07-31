@@ -47,23 +47,17 @@ if [ $release = "Centos" ]
             red " 不支持Centos系统，请更换Debian或Ubuntu "
       exit 1
 	   fi
-
-	if ! type sudo >/dev/null 2>&1; then
-	   yellow "sudo 未安装，安装中 "
-           apt install sudo -y 
-           else
-           green "sudo 已安装，继续 "
-fi   
+ 
 	if ! type curl >/dev/null 2>&1; then
 	   yellow "curl 未安装，安装中 "
-           sudo apt update && apt install curl -y 
+           apt update && apt install curl -y 
            else
            green "curl 已安装，继续 "
 fi
 
         if ! type wget >/dev/null 2>&1; then
            yellow "wget 未安装 安装中 "
-           sudo apt update && apt install wget -y 
+           apt update && apt install wget -y 
            else
            green "wget 已安装，继续 "
 fi  
