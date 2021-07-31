@@ -164,13 +164,13 @@ sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/loca
 sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
 sudo chmod +x /usr/local/bin/wgcf
 sudo chmod +x /usr/bin/wireguard-go
-sudo echo | wgcf register
+echo | wgcf register
 until [ $? -eq 0 ]
 do
-sudo sleep 1s
-sudo echo | wgcf register
+sleep 1s
+echo | wgcf register
 done
-sudo wgcf generate
+wgcf generate
 sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
 sudo sed -i '/\:\:\/0/d' wgcf-profile.conf
 sudo cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
@@ -200,13 +200,13 @@ sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/loca
 sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
 sudo chmod +x /usr/local/bin/wgcf
 sudo chmod +x /usr/bin/wireguard-go
-sudo echo | wgcf register
+echo | wgcf register
 until [ $? -eq 0 ]
 do
-sudo sleep 1s
-sudo echo | wgcf register
+sleep 1s
+echo | wgcf register
 done
-sudo wgcf generate
+wgcf generate
 sudo sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
 sudo sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
 sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
@@ -236,13 +236,13 @@ sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/loca
 sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
 sudo chmod +x /usr/local/bin/wgcf
 sudo chmod +x /usr/bin/wireguard-go
-sudo echo | wgcf register
+echo | wgcf register
 until [ $? -eq 0 ]
 do
-sudo sleep 1s
-sudo echo | wgcf register
+sleep 1s
+echo | wgcf register
 done
-sudo wgcf generate
+wgcf generate
 sudo sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
 sudo sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
 sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
