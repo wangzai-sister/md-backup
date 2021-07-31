@@ -50,7 +50,7 @@ if [ $release = "Centos" ]
  
 	if ! type curl >/dev/null 2>&1; then
 	   yellow "curl 未安装，安装中 "
-           apt update && apt install curl -y 
+           apt update && sudo apt install curl -y 
            else
            green "curl 已安装，继续 "
 fi
