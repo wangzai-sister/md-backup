@@ -151,19 +151,19 @@ function w64(){
 
 	if [ $release = "Debian" ]
 	then
-		sudo apt install sudo -y && apt install curl sudo lsb-release iptables -y
-                sudo echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
-                sudo apt update
-                sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt install sudo -y && apt install curl sudo lsb-release iptables -y
+                echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+                apt update
+                apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	elif [ $release = "Ubuntu" ]
 	then
-		sudo apt-get update -y &&  apt install sudo -y
-		sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt-get update -y &&  apt install sudo -y
+		apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	fi
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
-sudo chmod +x /usr/local/bin/wgcf
-sudo chmod +x /usr/bin/wireguard-go
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
+chmod +x /usr/local/bin/wgcf
+chmod +x /usr/bin/wireguard-go
 echo | wgcf register
 until [ $? -eq 0 ]
 do
@@ -171,14 +171,14 @@ sleep 1s
 echo | wgcf register
 done
 wgcf generate
-sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
-sudo sed -i '/\:\:\/0/d' wgcf-profile.conf
-sudo cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
-sudo cp wgcf-profile.conf /etc/wireguard/wgcf.conf
-sudo systemctl enable wg-quick@wgcf
-sudo systemctl start wg-quick@wgcf
-sudo rm -f warp4* wgcf* wireguard-go*
-sudo grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
+sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
+sed -i '/\:\:\/0/d' wgcf-profile.conf
+cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
+cp wgcf-profile.conf /etc/wireguard/wgcf.conf
+systemctl enable wg-quick@wgcf
+systemctl start wg-quick@wgcf
+rm -f wgcf* wireguard-go*
+grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
 yellow " 检测是否成功启动Warp！\n 显示IPV4地址：$(wget -qO- -4 ip.gs) "
 green " 如上方显示IPV4地址：8.…………，则说明成功啦！\n 如上方无IP显示，则说明失败喽！！"
 }
@@ -187,19 +187,19 @@ function w646(){
 	    
 	if [ $release = "Debian" ]
 	then
-		sudo apt install sudo -y && apt install curl sudo lsb-release iptables -y
-                sudo echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
-                sudo apt update
-                sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt install sudo -y && apt install curl sudo lsb-release iptables -y
+                echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+                apt update
+                apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	elif [ $release = "Ubuntu" ]
 	then
-		sudo apt-get update -y &&  apt install sudo -y
-		sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt-get update -y &&  apt install sudo -y
+		apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	fi
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
-sudo chmod +x /usr/local/bin/wgcf
-sudo chmod +x /usr/bin/wireguard-go
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
+chmod +x /usr/local/bin/wgcf
+chmod +x /usr/bin/wireguard-go
 echo | wgcf register
 until [ $? -eq 0 ]
 do
@@ -207,14 +207,15 @@ sleep 1s
 echo | wgcf register
 done
 wgcf generate
-sudo sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
-sudo sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
-sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
-sudo cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
-sudo cp wgcf-profile.conf /etc/wireguard/wgcf.conf
-sudo systemctl enable wg-quick@wgcf
-sudo systemctl start wg-quick@wgcf
-sudo grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
+sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
+sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
+sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
+cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
+cp wgcf-profile.conf /etc/wireguard/wgcf.conf
+systemctl enable wg-quick@wgcf
+systemctl start wg-quick@wgcf
+rm -f wgcf* wireguard-go*
+grep -qE '^[ ]*precedence[ ]*::ffff:0:0/96[ ]*100' /etc/gai.conf || echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
 yellow " 检测是否成功启动（IPV4+IPV6）双栈Warp！\n 显示IPV4地址：$(wget -qO- -4 ip.gs) 显示IPV6地址：$(wget -qO- -6 ip.gs) "
 green " 如上方显示IPV4地址：8.…………，IPV6地址：2a09:…………，则说明成功啦！\n 如上方IPV4无IP显示，IPV6显示本地IP，则说明失败喽！"
 }
@@ -223,19 +224,19 @@ function w66(){
 
 	if [ $release = "Debian" ]
 	then
-		sudo apt install sudo -y && apt install curl sudo lsb-release iptables -y
-                sudo echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
-                sudo apt update
-                sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt install sudo -y && apt install curl sudo lsb-release iptables -y
+                echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+                apt update
+                apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	elif [ $release = "Ubuntu" ]
 	then
-		sudo apt-get update -y &&  apt install sudo -y
-		sudo apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
+		apt-get update -y &&  apt install sudo -y
+		apt -y --no-install-recommends install openresolv dnsutils wireguard-tools
 	fi
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
-sudo wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
-sudo chmod +x /usr/local/bin/wgcf
-sudo chmod +x /usr/bin/wireguard-go
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wgcf -O /usr/local/bin/wgcf
+wget -N -6 https://cdn.jsdelivr.net/gh/YG-tsj/EUserv-warp/wireguard-go -O /usr/bin/wireguard-go
+chmod +x /usr/local/bin/wgcf
+chmod +x /usr/bin/wireguard-go
 echo | wgcf register
 until [ $? -eq 0 ]
 do
@@ -243,17 +244,17 @@ sleep 1s
 echo | wgcf register
 done
 wgcf generate
-sudo sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
-sudo sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
-sudo sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
-sudo sed -i '/0\.0\.0\.0\/0/d' wgcf-profile.conf
-sudo sed -i 's/1.1.1.1/2001:4860:4860::8888,8.8.8.8/g' wgcf-profile.conf
-sudo cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
-sudo cp wgcf-profile.conf /etc/wireguard/wgcf.conf
-sudo systemctl enable wg-quick@wgcf
-sudo systemctl start wg-quick@wgcf
-sudo rm -f warp64* wgcf* wireguard-go*
-sudo grep -qE '^[ ]*label[ ]*2002::/16[ ]*2' /etc/gai.conf || echo 'label 2002::/16   2' | sudo tee -a /etc/gai.conf
+sed -i "5 s/^/PostUp = ip -6 rule add from $rv6 table main\n/" wgcf-profile.conf
+sed -i "6 s/^/PostDown = ip -6 rule delete from $rv6 table main\n/" wgcf-profile.conf
+sed -i 's/engage.cloudflareclient.com/2606:4700:d0::a29f:c001/g' wgcf-profile.conf
+sed -i '/0\.0\.0\.0\/0/d' wgcf-profile.conf
+sed -i 's/1.1.1.1/2001:4860:4860::8888,8.8.8.8/g' wgcf-profile.conf
+cp wgcf-account.toml /etc/wireguard/wgcf-account.toml
+cp wgcf-profile.conf /etc/wireguard/wgcf.conf
+systemctl enable wg-quick@wgcf
+systemctl start wg-quick@wgcf
+rm -f wgcf* wireguard-go*
+grep -qE '^[ ]*label[ ]*2002::/16[ ]*2' /etc/gai.conf || echo 'label 2002::/16   2' | sudo tee -a /etc/gai.conf
 yellow " 检测是否成功启动Warp！\n 显示IPV6地址：$(wget -qO- -6 ip.gs) "
 green " 如上方显示IPV6地址：2a09:…………，则说明成功！\n 如上方IPV6显示本地IP，则说明失败喽！ "
 }
@@ -262,7 +263,7 @@ green " 如上方显示IPV6地址：2a09:…………，则说明成功！\n 如
 function cwarp(){
 systemctl stop wg-quick@wgcf
 systemctl disable wg-quick@wgcf
-sudo reboot
+reboot
 }
 
 function owarp(){
@@ -283,7 +284,7 @@ wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.60_
 }
 
 function reboot(){
-sudo reboot
+reboot
 }
 
 function dns(){
@@ -292,7 +293,7 @@ systemctl restart systemd-resolved
 systemctl enable systemd-resolved
 mv /etc/resolv.conf  /etc/resolv.conf.bak
 ln -s /run/systemd/resolve/resolv.conf /etc/
-sudo reboot
+reboot
 }
 
 function status(){
